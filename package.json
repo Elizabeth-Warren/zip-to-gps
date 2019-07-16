@@ -1,0 +1,15 @@
+{
+  "scripts": {
+    "test": "mocha"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4",
+    "serverless-domain-manager": "^3.2.6",
+    "serverless-log-forwarding": "^1.4.0"
+  },
+  "dependencies": {
+    "@ewarren/serverless-routing": "^1.3.4",
+    "zipcodes": "^8.0.0"
+  }
+}

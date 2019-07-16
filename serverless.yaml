@@ -1,0 +1,35 @@
+frameworkVersion: ">=1.0.0 <2.0.0"
+
+custom:
+  stage: ${opt:stage, 'dev'}
+  basePath: ${self:custom.stage}-zip-to-gps
+    logForwarding:
+    destinationARN: ${cf:lambda-papertrail-prod.ForwarderLambdaArn}
+  customDomain:
+    domainName: api.elizabethwarren.codes
+    basePath: ${self:custom.basePath}
+    stage: ${self:custom.stage}
+    createRoute53Record: true
+
+service: zip-to-gps
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+
+plugins:
+  - serverless-domain-manager
+  - serverless-log-forwarding
+
+functions:
+  api:
+    handler: src/handler.router
+    events:
+      - http:
+          path: /
+          method: any
+          cors: true
+      - http:
+          path: /{proxy+}
+          method: any
+          cors: true
