@@ -3,7 +3,7 @@ frameworkVersion: ">=1.0.0 <2.0.0"
 custom:
   stage: ${opt:stage, 'dev'}
   basePath: ${self:custom.stage}-zip-to-gps
-    logForwarding:
+  logForwarding:
     destinationARN: ${cf:lambda-papertrail-prod.ForwarderLambdaArn}
   customDomain:
     domainName: api.elizabethwarren.codes
